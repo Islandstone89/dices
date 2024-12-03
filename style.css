@@ -59,23 +59,25 @@
     background-color: var(--clr-bg);
     color: var(--clr-primary);
 
-    :has(.btn[data-theme="light"]) {
+   
+
+    &:has(.js-btn1[data-theme="dark"]) {
+      --clr-bg: var(--clr-dark);
+      --clr-primary: var(--clr-light);
+      --clr-accent: var(--clr-dark-red);
+    }
+
+    &:has(.js-btn2[data-theme="light"]) {
       --clr-bg: var(--clr-light);
       --clr-primary: var(--clr-dark-red);
       --clr-accent: var(--clr-dark);
     }
 
-    &:has(.btn[data-theme="dark"]) {
+  /*   &:has(#testing:checked) {
       --clr-bg: var(--clr-dark);
       --clr-primary: var(--clr-light);
       --clr-accent: var(--clr-dark-red);
-    }
-
-    &:has(#testing:checked) {
-      --clr-bg: var(--clr-dark);
-      --clr-primary: var(--clr-light);
-      --clr-accent: var(--clr-dark-red);
-    }
+    } */
   }
 
   .container {
