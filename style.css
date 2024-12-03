@@ -45,16 +45,37 @@
 
 
   :root {
-    --clr-dark: #1e1e24;
-    --clr-dark-red: #92150c;
-    --clr-light: #fff8f0;
+    --clr-dark: hsl(240, 9%, 13%);
+    --clr-dark-red: hsl(4, 75%, 37%);
+    --clr-light: hsl(32, 100%, 97%);
   }
 
 
   body {
+    --clr-bg: var(--clr-light);
+    --clr-primary: var(--clr-dark-red);
+    --clr-accent: var(--clr-dark);
     font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--clr-dark);
-    color: var(--clr-light);
+    background-color: var(--clr-bg);
+    color: var(--clr-primary);
+
+    :has(.btn[data-theme="light"]) {
+      --clr-bg: var(--clr-light);
+      --clr-primary: var(--clr-dark-red);
+      --clr-accent: var(--clr-dark);
+    }
+
+    &:has(.btn[data-theme="dark"]) {
+      --clr-bg: var(--clr-dark);
+      --clr-primary: var(--clr-light);
+      --clr-accent: var(--clr-dark-red);
+    }
+
+    &:has(#testing:checked) {
+      --clr-bg: var(--clr-dark);
+      --clr-primary: var(--clr-light);
+      --clr-accent: var(--clr-dark-red);
+    }
   }
 
   .container {
@@ -69,9 +90,33 @@
     }
   }
 
+  .btn {
+    --btn-bg-clr: var(--clr-bg);
+    --btn-text-clr: var(--clr-primary);
+    --btn-outline-clr: var(--clr-primary);
+    border: transparent;
+    background-color: var(--btn-bg-clr);
+    color: var(--btn-text-clr);
+    border-radius: 20px;
+    padding: .5em 2em;
+    cursor: pointer;
+    font-weight: 600;
+    outline: 2px solid var(--btn-outline-clr);
+    transition: all 250ms ease-in-out;
+
+    &:is(:hover, :focus-visible) {
+      --btn-bg-clr: var(--clr-primary);
+      --btn-text-clr: var(--clr-bg);
+      --btn-outline-clr: var(--clr-primary);
+    }
+  }
+
+  .heading {
+    margin-block: 40px;
+  }
+
   
   .dices {
-    margin-block: 60px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
     gap: 50px;
@@ -79,7 +124,7 @@
 
   .dice {
     aspect-ratio: 1;
-    background-color: var(--clr-light);
+    background-color: var(--clr-primary);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -97,7 +142,7 @@
   }
 
   .dot {
-    background-color: var(--clr-dark-red);
+    background-color: var(--clr-accent);
     border-radius: 50%;
   }
 
