@@ -100,7 +100,12 @@
   }
 
   .heading {
+    position: relative;
     margin-block: 40px;
+    font-style: italic;
+    text-decoration-line: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: var(--clr-accent);
   }
 
   
